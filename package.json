@@ -8,13 +8,21 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@prisma/client": "^4.16.1",
     "@remix-run/css-bundle": "^1.17.1",
     "@remix-run/node": "^1.17.1",
     "@remix-run/react": "^1.17.1",
     "@remix-run/serve": "^1.17.1",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "isbot": "^3.6.8",
+    "jsonwebtoken": "^9.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sqlite3": "^5.1.6",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.17.1",
@@ -22,6 +30,7 @@
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
     "eslint": "^8.38.0",
+    "prisma": "^4.16.1",
     "typescript": "^5.0.4"
   },
   "engines": {
