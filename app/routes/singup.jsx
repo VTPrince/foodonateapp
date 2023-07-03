@@ -35,7 +35,7 @@ export default function Signup(){
                 navigate('/');
             }else{
                 setIsLoading(false);
-                console.log(userName,email,password);
+                // console.log(userName,email,password);
                 alert("Please try again");
             }
         }catch(error){
