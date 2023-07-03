@@ -11,7 +11,14 @@ export default function Reach() {
 
   const addOrganization = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/organizations'); // Replace with your Express server endpoint
+      const token = localStorage.getItem("token"); 
+      console.log(token);
+      const response = await fetch('http://localhost:5000/api/organizations',{
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `${token}`
+      }}); // Replace with your Express server endpoint
       if (!response.ok) {
         throw new Error('Failed to fetch organizations');
       }
@@ -29,7 +36,7 @@ export default function Reach() {
   return (
     <div>
       <h2>Organizations to Donate Food</h2>
-      <button onClick={addOrganization}>Add Organization</button>
+      <button onClick={addOrganization}>Show available Organizations</button>
 
       {organizations.length === 0 ? (
         <div>No organizations available.</div>
