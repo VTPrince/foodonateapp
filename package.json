@@ -20,7 +20,9 @@
     "isbot": "^3.6.8",
     "jsonwebtoken": "^9.0.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.10.1",
     "sqlite3": "^5.1.6",
     "uuidv4": "^6.2.13"
   },
