@@ -6,7 +6,7 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Remix: So great, it's funny!</title>
+        <title>Here's some Food for thought!</title>
         <Links />
       </head>
       <body>
