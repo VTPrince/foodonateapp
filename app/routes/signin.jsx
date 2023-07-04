@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "@remix-run/react";
 import styles from "app/styles/signin.css"
-
+import {FaUser, FaLock} from "react-icons/fa";
 export const links = () => [
     { rel: "stylesheet", href: styles },
   ];
@@ -51,7 +51,7 @@ export default function Login() {
       <form>
         <h3>Login Here</h3>
 
-        <label htmlFor="username">Enter your username</label>
+        <label htmlFor="username"><FaUser/>&nbsp;&nbsp;Enter your username</label>
         <input
           type="text"
           placeholder="Username"
@@ -60,7 +60,7 @@ export default function Login() {
           onChange={(event) => setUserName(event.target.value)}
         />
 
-        <label htmlFor="password">Enter your password</label>
+        <label htmlFor="password"><FaLock/>&nbsp;&nbsp;Enter your password</label>
         <input
           type="password"
           placeholder="Password"
@@ -72,7 +72,7 @@ export default function Login() {
         <button type="submit" onClick={handleLogin}>
           Log In
         </button>
-        <button type= "button" onClick={handleNewUser}>New User?</button>
+        <button style={{marginTop:20}} type= "button" onClick={handleNewUser}>New User?</button>
       </form>
     </div>
   );
