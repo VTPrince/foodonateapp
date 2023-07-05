@@ -1,40 +1,59 @@
 import React, { useState } from 'react';
 import { Outlet, Link } from "@remix-run/react";
 import styles from "../styles/reach.css";
-
+import banner from "app/images/premium_photo-1661777642269-4fb440ddd0dd.avif";
 export const links = () => [
   { rel: "stylesheet", href: styles },
 ];
 
 export default function Reach() {
   const [organizations, setOrganizations] = useState([]);
-
-  const addOrganization = async () => {
+  const [page, setPage] = useState(1);
+const [totalPages, setTotalPages] = useState(0);
+  const addOrganization = async (pageNumber = 1) => {
     try {
-      const token = localStorage.getItem("token"); 
-      console.log(token);
-      const response = await fetch('http://localhost:5000/api/organizations',{
+      const token = localStorage.getItem("token");
+      // console.log(token);
+      // console.log("addOrganization - pageNumber:", pageNumber); // Check the value of pageNumber
+  
+      const response = await fetch(`http://localhost:5000/api/organizations?page=${pageNumber}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `${token}`
-      }}); // Replace with your Express server endpoint
+        }
+      });
+  
       if (!response.ok) {
         throw new Error('Failed to fetch organizations');
       }
+  
       const data = await response.json();
-      const indexedData = data.map((item, index) => ({
+      console.log(data);
+      const indexedData = data.organizations.map((item, index) => ({
         ...item,
         id: index + 1,
       }));
       setOrganizations(indexedData);
+      setTotalPages(data.pagination.totalPages);
+      setPage(pageNumber);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
-
+  
   return (
     <div>
+      <ul className="pagination">
+        {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNum) => (
+          <li key={pageNum} className={pageNum === page ? 'active' : ''}>
+            <button onClick={() => {
+              console.log("Button clicked - pageNum:", pageNum); // Check the value of pageNum when the button is clicked
+              addOrganization(pageNum);
+            }}>{pageNum}</button>
+          </li>
+      ))}
+    </ul>
       <h2>Organizations to Donate Food</h2>
       <button onClick={addOrganization}>Show available Organizations</button>
 
@@ -48,7 +67,7 @@ export default function Reach() {
               <li className="cards_item" key={org.id}>
                 <div className="card">
                   <div className="card_image">
-                    <img src="https://picsum.photos/500/300/?image=10" alt="" />
+                    <img src={banner} alt="" />
                   </div>
                   <div className="card_content">
                     <h2 className="card_title">{org.name}</h2>
