@@ -31,7 +31,7 @@ export default function Login() {
         const token = data.token;
         localStorage.setItem("token", token);
         console.log(token);
-        navigate("/");
+        navigate("/donation");
       } else {
         alert("Please try again");
       }
