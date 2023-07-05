@@ -76,7 +76,7 @@ app.post('/api/login',(req,res)=>{
 
 function verifyToken(req,res,next){
     const token=req.headers.authorization;
-    console.log(token);
+    console.log("token verified!!",token);
     if(!token){
         return res.status(401).json({error:'Unauthorized,dont have token'});
     }
@@ -91,23 +91,52 @@ function verifyToken(req,res,next){
 }
 
 app.get('/api/organizations',verifyToken,(req,res)=>{
-    db.all('select name,description from organizations',(err,rows)=>{
+    // Get the requested page number from the query parameters.
+    // If no page number is specified, the default value of 1 is used.
+    console.log("this is req!!! ",req.query);
+    const page = parseInt(req.query.page)|| 1;
+    const limit = 10;
+    // Calculate the offset, which is the number of items that have already been returned from the database.
+    const offset = (page - 1)* limit;
+
+    // Start a database transaction.This allows us to ensure that all of the queries in the block are executed atomically, or as a single unit.
+    db.serialize(()=>{
+        db.get('select count(*) as total from organizations',(err,countRow)=>{
+            if(err){
+                console.log(err);
+                return res.status(500).json({error: 'Internal Server Error'});
+            }
+            const total =countRow.total;
+            const totalPages=Math.ceil(total/limit);
+
+    db.all('select name,description from organizations limit? offset? ',[limit,offset],(err,rows)=>{
         if(err){
             console.log(err);
             res.status(500).json({error:'Intenal Server Error'});
         }
         else{
-            res.json(rows);
+            res.json({
+                organizations:rows,
+                pagination:{
+                    page,
+                    limit,
+                    total,
+                    totalPages
+                }
+            });
         }
     });
 });
 
+    });
+});
+
 //User logout
-// app.post('/api/logout',(req,res)=>{
-//     req.logout(function(err) {
-//         if (err) { console.log(err) ;}
-//         res.redirect('/');
-// })});
+app.post('/api/logout',(req,res)=>{
+    req.logout(function(err) {
+        if (err) { console.log(err) ;}
+        res.redirect('/');
+})});
 const port=process.env.PORT || 5000;
 app.listen(port,()=>{
     console.log('Server is running on port 5000');
