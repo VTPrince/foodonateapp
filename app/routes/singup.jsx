@@ -45,9 +45,11 @@ export default function Signup(){
     };
 
     return(
-        <div className="signup-page">
-            <h1>Sign Up</h1>
+        <div className="background">
+            <div className="shape"></div>
+            
             <form onSubmit={handleSubmit}>
+            <h3>Sign Up</h3>
             <input
                 type="username"
                 placeholder="UserName"
