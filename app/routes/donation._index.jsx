@@ -44,7 +44,7 @@ export default function DonationIndexRoute() {
         </div>
 
         <div className="benefit">
-          <h3>Spread Happiness <FaSmile/></h3>
+          <h3>Spread Happiness <FaSmile style={{color:'black'}}/></h3>
           <p>Imagine the joy on someone's face when they receive a warm meal because of your generosity.</p>
         </div>
       </section>
