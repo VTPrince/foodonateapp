@@ -126,6 +126,7 @@ img {
 
 .pagination li {
   margin-right: 5px;
+  list-style: none;
 }
 
 .pagination button {
