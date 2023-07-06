@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import stylesUrl from "~/styles/donation.css";
 import banner from "app/images/istockphoto-1224414210-612x612.jpg";
 import { Link } from "@remix-run/react";
@@ -8,6 +8,16 @@ export const links = () => [
 ];
 
 export default function DonationIndexRoute() {
+  const[isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(()=>{
+    const token=localStorage.getItem('token');
+    if(token){
+      setIsLoggedIn(true)
+      console.log(token);
+    }
+    else{
+    setIsLoggedIn(false)}
+  },[])
   return (
     <div>
       <header>
@@ -15,7 +25,10 @@ export default function DonationIndexRoute() {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/reach">Donate Now</Link></li>
-            <li><Link to="/signin">Sign-In/Register</Link></li>
+            {isLoggedIn?(<li><Link to="/logout">Logout</Link></li>)
+            :
+            (<li><Link to="/signin">Sign-In/Register</Link></li>)}
+            {/* <li><Link to="/signin"></Link></li> */}
             
             {/* <li><a href="/reach">Donate</a></li>
             <li><a href="/about">About</a></li>
