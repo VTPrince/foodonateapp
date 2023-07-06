@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet, Link } from "@remix-run/react";
 import styles from "../styles/reach.css";
-import banner from "app/images/premium_photo-1661777642269-4fb440ddd0dd.avif";
 export const links = () => [
   { rel: "stylesheet", href: styles },
 ];
@@ -67,7 +66,7 @@ const [totalPages, setTotalPages] = useState(0);
               <li className="cards_item" key={org.id}>
                 <div className="card">
                   <div className="card_image">
-                    <img src={banner} alt="" />
+                    <img src={org.image} alt="" />
                   </div>
                   <div className="card_content">
                     <h2 className="card_title">{org.name}</h2>
