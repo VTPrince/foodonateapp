@@ -12,8 +12,32 @@ export default function DonationIndexRoute() {
   useEffect(()=>{
     const token=localStorage.getItem('token');
     if(token){
-      setIsLoggedIn(true)
-      console.log(token);
+
+      const verifytoken= async()=>{
+        try{
+          const response= await fetch("http://localhost:5000/api/verify",{
+            method:'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `${token}`,
+            },
+          });
+          if (response.ok) {
+            // Handle successful logout
+            setIsLoggedIn(true)
+            console.log(token);
+          } else {
+            // Handle error
+            console.log("we got an error")
+            setIsLoggedIn(false)
+          }
+        } catch (error) {
+          console.error("we got an error",error);
+        }
+      };
+
+      verifytoken();
+
     }
     else{
     setIsLoggedIn(false)}
