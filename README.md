@@ -8,6 +8,7 @@ The FoodDonate app is a donation platform built with Remix, Express.js, and SQLi
 * Responsive card layout for a visually appealing UI
 
 ## Technologies Used
+* React
 * Remix
 * Express
 * SQLite
