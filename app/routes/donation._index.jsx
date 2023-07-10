@@ -70,7 +70,6 @@ export default function DonationIndexRoute() {
       <section id="benefits">
         <h2>Why Donate?</h2>
         <div className="benefit">
-          {/* <div className="icon"></div> */}
           <h3>Make a Difference <FaHeart style={{color: 'red'}}/></h3>
           <p>Your donation can help feed someone in need and make a positive impact on their life.</p>
         </div>
