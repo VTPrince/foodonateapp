@@ -9,7 +9,8 @@ export default function Reach() {
   const [organizations, setOrganizations] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const[isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showOrganization, setShowOrganization] = useState(false);
 useEffect(()=>{
   const token=localStorage.getItem('token');
   if(token){
@@ -73,6 +74,7 @@ useEffect(()=>{
     } catch (error) {
       console.log(error);
     }
+    setShowOrganization(true);
   };
   
   return (
@@ -112,11 +114,10 @@ useEffect(()=>{
       <button onClick={addOrganization}>Show available Organizations</button>
       </div>
 
-      {organizations.length === 0 ? (
+      {showOrganization?  (organizations.length === 0 ? (
         <div>No organizations available.</div>
       ) : (
         <div className="main">
-          <h1>Responsive Card Grid Layout</h1>
           <ul className="cards">
             {organizations.map(org => (
               <li className="cards_item" key={org.id}>
@@ -135,7 +136,7 @@ useEffect(()=>{
           </ul>
           <h3 className="made_by">Made with ♡</h3>
         </div>
-      )}
+      )): null}
     </div>
   );
 }
