@@ -133,11 +133,16 @@ app.get('/api/organizations',verifyToken,(req,res)=>{
 
 //User logout
 app.post('/api/logout',verifyToken,(req,res)=>{
-    res.json({ message: 'Logout successful' });
+    const token=req.headers.authorization
+    res.json({ message: 'Logout successful', token: "this is"+token});
 //     req.logout(function(err) {
 //         if (err) { console.log(err) ;}
 //         res.redirect('/');
 // })
+});
+
+app.post('/api/verify',verifyToken,(req,res)=>{
+    res.json({message:"this is verified"})
 });
 const port=process.env.PORT || 5000;
 app.listen(port,()=>{
