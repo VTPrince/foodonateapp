@@ -77,7 +77,19 @@ useEffect(()=>{
   
   return (
     <div>
-              <nav>
+      <div>
+      
+          <nav>
+          <ul className="pagination">
+        {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNum) => (
+          <li key={pageNum} className={pageNum === page ? 'active' : ''}>
+            <button onClick={() => {
+              console.log("Button clicked - pageNum:", pageNum); // Check the value of pageNum when the button is clicked
+              addOrganization(pageNum);
+            }}>{pageNum}</button>
+          </li>
+      ))}
+    </ul>
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/donation">Why Donate?</Link></li>
@@ -92,18 +104,13 @@ useEffect(()=>{
             <li></li>
           </ul>
         </nav>
-      <ul className="pagination">
-        {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNum) => (
-          <li key={pageNum} className={pageNum === page ? 'active' : ''}>
-            <button onClick={() => {
-              console.log("Button clicked - pageNum:", pageNum); // Check the value of pageNum when the button is clicked
-              addOrganization(pageNum);
-            }}>{pageNum}</button>
-          </li>
-      ))}
-    </ul>
+        </div>
+      <div>
+      <br/>
+      <br/>
       <h2>Organizations to Donate Food</h2>
       <button onClick={addOrganization}>Show available Organizations</button>
+      </div>
 
       {organizations.length === 0 ? (
         <div>No organizations available.</div>
