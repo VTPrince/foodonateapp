@@ -9,7 +9,7 @@ The FoodDonate app is a donation platform built with Remix, Express.js, and SQLi
 
 ## Screenshots
 About Page:
-![Alt text] (https://github.com/VTPrince/foodonateapp/blob/main/app/images/Donate.PNG)
+<img width="887" alt="Donate" src="https://github.com/VTPrince/foodonateapp/assets/53681461/2a4da984-1fb9-427d-b3d4-f83b0aa063d5">
 
 ## Technologies Used
 * React
