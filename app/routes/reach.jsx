@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Outlet, Link } from "@remix-run/react";
 import styles from "../styles/reach.css";
 export const links = () => [
@@ -8,7 +8,41 @@ export const links = () => [
 export default function Reach() {
   const [organizations, setOrganizations] = useState([]);
   const [page, setPage] = useState(1);
-const [totalPages, setTotalPages] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const[isLoggedIn, setIsLoggedIn] = useState(false);
+useEffect(()=>{
+  const token=localStorage.getItem('token');
+  if(token){
+
+    const verifytoken= async()=>{
+      try{
+        const response= await fetch("http://localhost:5000/api/verify",{
+          method:'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `${token}`,
+          },
+        });
+        if (response.ok) {
+          // Handle successful logout
+          setIsLoggedIn(true)
+          console.log(token);
+        } else {
+          // Handle error
+          console.log("we got an error")
+          setIsLoggedIn(false)
+        }
+      } catch (error) {
+        console.error("we got an error",error);
+      }
+    };
+
+    verifytoken();
+
+  }
+  else{
+  setIsLoggedIn(false)}
+},[])
   const addOrganization = async (pageNumber = 1) => {
     try {
       const token = localStorage.getItem("token");
@@ -43,6 +77,21 @@ const [totalPages, setTotalPages] = useState(0);
   
   return (
     <div>
+              <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/donation">Why Donate?</Link></li>
+            {isLoggedIn?(<li><Link to="/logout">Logout</Link></li>)
+            :
+            (<li><Link to="/signin">Sign-In/Register</Link></li>)}
+            {/* <li><Link to="/signin"></Link></li> */}
+            
+            {/* <li><a href="/reach">Donate</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li> */}
+            <li></li>
+          </ul>
+        </nav>
       <ul className="pagination">
         {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNum) => (
           <li key={pageNum} className={pageNum === page ? 'active' : ''}>
@@ -71,7 +120,7 @@ const [totalPages, setTotalPages] = useState(0);
                   <div className="card_content">
                     <h2 className="card_title">{org.name}</h2>
                     <p className="card_text">{org.description}</p>
-                    <button className="btn card_btn">Read More</button>
+                    {/* <button className="btn card_btn">Read More</button> */}
                   </div>
                 </div>
               </li>
