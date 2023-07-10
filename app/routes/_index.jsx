@@ -3,7 +3,6 @@
 
 import stylesUrl from "~/styles/index.css";
 import { Link } from "@remix-run/react";
-import banner from "app/images/food-and-groceries-donation-illustration-free-vector.jpg";
 export const links = () => [
   { rel: "stylesheet", href: stylesUrl },
 ];
@@ -17,7 +16,7 @@ export default function IndexRoute() {
     <fieldset>
       <p>Hey, Stranger! Got some leftover food?</p>
       <p>Each day 25K people, including 10K children,  die from hunger each day, while 3.6 million food is wasted daily.</p>
-      <p>You can help change those people by donating your food.</p>
+      <p>You can help save those people by donating your food.</p>
       <button className="button button--xlarge"  tabIndex="4"><Link  to="/donation">Wanna Make a Difference?  &#187;</Link></button>
     </fieldset>
   </form>
@@ -43,23 +42,5 @@ export default function IndexRoute() {
   </defs>
 </svg>
 </div>
-    // <div>
-    //   <section className="donation-section">
-    //     <h2>Food Donation</h2>
-    //     <p>
-    //       Start donating your excess food to those in need and make a
-    //       difference in their lives.
-    //     </p>
-    //     <Link to="/donation">Donate Now</Link>
-    //   </section>
-    //   <section className="receiver-section">
-    //     <h2>Food Receiver</h2>
-    //     <p>
-    //       Find and receive donated food to help fulfill the needs of your
-    //       organization or community.
-    //     </p>
-    //     <Link to="/receiver">Find Food</Link>
-    //   </section>
-    // </div>
   );
 }
