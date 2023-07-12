@@ -5,6 +5,8 @@ export const links = () => [
   { rel: "stylesheet", href: styles },
 ];
 
+
+
 export default function Reach() {
   const [organizations, setOrganizations] = useState([]);
   const [page, setPage] = useState(1);
@@ -76,8 +78,8 @@ useEffect(()=>{
     }
     setShowOrganization(true);
   };
-  
   return (
+    
     <div>
       <div>
       
@@ -128,7 +130,7 @@ useEffect(()=>{
                   <div className="card_content">
                     <h2 className="card_title">{org.name}</h2>
                     <p className="card_text">{org.description}</p>
-                    {/* <button className="btn card_btn">Read More</button> */}
+                    <Link to='/org_donate' state={{data: { name: org.name }}}><button className="btn card_btn">Read More</button></Link>
                   </div>
                 </div>
               </li>
