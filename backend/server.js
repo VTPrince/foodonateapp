@@ -131,6 +131,11 @@ app.get('/api/organizations',verifyToken,(req,res)=>{
     });
 });
 
+app.post('/api/donate',(req,res)=>{
+    const{amount,org_name}=req.body;
+    res.json({"amount":amount,"orgname":org_name});
+});
+
 //User logout
 app.post('/api/logout',verifyToken,(req,res)=>{
     const token=req.headers.authorization
