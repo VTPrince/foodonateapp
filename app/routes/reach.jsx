@@ -29,7 +29,7 @@ useEffect(()=>{
         if (response.ok) {
           // Handle successful logout
           setIsLoggedIn(true)
-          console.log(token);
+          // console.log(token);
         } else {
           // Handle error
           console.log("we got an error")
