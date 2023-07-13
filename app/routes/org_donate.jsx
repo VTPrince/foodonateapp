@@ -6,10 +6,12 @@ export default function OrgDonate(){
     const [orgName,setOrgName] = useState('');
     const [amount,setAmount] = useState(0);
     const orgdata=location.state.data;
+    // console.log(orgdata)
     // setOrgName(data.name);
     const payDonation=async(submitEvent,orgName,amount)=>{
         submitEvent.preventDefault();
         try{
+            // console.log("Original Body: ",amount,orgName);
             const response=await fetch('http://localhost:5000/api/donate',{
                 method:'POST',
                 headers:{
@@ -20,9 +22,10 @@ export default function OrgDonate(){
                     org_name:orgName
                 }),
             });
-            console.log(response);
+            const data= await response.json() 
+            console.log(data);
             if (response.ok){
-                alert("u donated");
+                alert("u donated "+ data.amount + " to " + data.org_name);
             }
             else{
                 alert("error")
@@ -35,6 +38,7 @@ export default function OrgDonate(){
 
     useEffect(()=>{
         if (location.state) {
+            // console.log("going here")
             setOrgName(orgdata.name);
           }
         // setOrgName(data.name);
@@ -46,6 +50,10 @@ export default function OrgDonate(){
 
     },[location.state,orgdata.name])
 
+    const handleAmountChange = (event) => {
+        setAmount(event.target.value);
+        // console.log("Setting new amount",amount)
+      };
 
 
     return(
@@ -57,9 +65,9 @@ export default function OrgDonate(){
                     type="number"
                     placeholder="Amount"
                     value={amount}
-                    onChange={(event)=>setAmount(event.target.value)}
+                    onChange={handleAmountChange}
                 />
-                <button type="submit" onClick={payDonation}>
+                <button type="submit" onClick={(submitEvent)=>payDonation(submitEvent,orgName,amount)}>
                     Pay Amount
                 </button>
             </form>
