@@ -133,8 +133,18 @@ app.get('/api/organizations',verifyToken,(req,res)=>{
 
 app.post('/api/donate',(req,res)=>{
     const{amount,org_name}=req.body;
-    res.json({"amount":amount,"orgname":org_name});
-});
+    
+    console.log(org_name,amount);
+    
+    const result = db.run('update organizations set payment = payment + ? where name =?',[amount,org_name]);
+    console.log("this is the result: ",result)
+    if (result.rowCount === 0) {
+      console.log("org not found");
+    }
+    res.json({"amount":amount,"org_name":org_name});
+    return;
+
+    });
 
 //User logout
 app.post('/api/logout',verifyToken,(req,res)=>{
