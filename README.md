@@ -46,6 +46,7 @@ The FoodDonate app is a donation platform built with Remix, Express.js, and SQLi
 3. Start the server using `npm start`.
 4. Access the app in your browser at `http://localhost:3000`.
 5. Acess the backend server at `http://localhost:5000`.
+6. You need to install sqlite in your local environment to run the database
 
 ## Usage
 * Register a new user account or login if you already have one.
