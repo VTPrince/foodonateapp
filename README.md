@@ -1,11 +1,11 @@
-# FoodDonate App
+# Feeding Hope: Be the Change and Donate to Food Organizations
 
-The FoodDonate app is a donation platform built with Remix, Express.js, and SQLite. It allows users to contribute food to organizations in need. The app features user authentication, dynamic display of organizations, and a responsive card layout. It provides a seamless user experience and aims to make food donation easy and accessible.
+This app is a donation platform built with Remix, React, Express.js, and SQLite. It allows users to contribute money to food donating organizations. The app features user registration, dynamic display of organizations, and acts as a platform to provide a seamless user experience that aims to make donation easy and accessible to the respective organizations.
 
 ## Features
 * User Login/Sign-Up for secure access
 * CRUD operations on the database
-* Display of organizations to donate food using pagination
+* Display of organizations to donate food
 * Responsive card layout for a visually appealing UI
 
 ## Screenshots
