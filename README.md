@@ -16,7 +16,7 @@ This app is a donation platform built with Remix, React, Express.js, and SQLite.
 
 #### Home Page:
 <br>
-<img width="887" alt="Donate" src="https://github.com/VTPrince/foodonateapp/assets/53681461/2a4da984-1fb9-427d-b3d4-f83b0aa063d5">
+<img width="899" alt="Donate" src="https://github.com/VTPrince/foodonateapp/assets/53681461/b74fc90a-4d6a-40cf-b550-6af228420979">
 <br>
 
 #### Login Page:
