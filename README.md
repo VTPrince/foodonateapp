@@ -4,9 +4,10 @@ This app is a donation platform built with Remix, React, Express.js, and SQLite.
 
 ## Features
 * User Login/Sign-Up for secure access
+* Implemented user authentication using JWT tokens for secure login and registration
+* Developed server-side verification to authorize access to protected routes and resources, along with token expiration and renewal for enhanced security
+* Displaying data from database of organizations to donate money to.
 * CRUD operations on the database
-* Display of organizations to donate food
-* Responsive card layout for a visually appealing UI
 
 ## Screenshots
 #### Landing Page:
