@@ -130,7 +130,7 @@ useEffect(()=>{
                   <div className="card_content">
                     <h2 className="card_title">{org.name}</h2>
                     <p className="card_text">{org.description}</p>
-                    <Link to='/org_donate' state={{data: { name: org.name }}}><button className="btn card_btn">Read More</button></Link>
+                    <Link to='/org_donate' state={{data: { name: org.name,imag: btoa(org.image) }}}><button className="btn card_btn">Read More</button></Link>
                   </div>
                 </div>
               </li>
