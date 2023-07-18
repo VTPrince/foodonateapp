@@ -60,7 +60,7 @@ export default function DonationIndexRoute() {
             <li></li>
           </ul>
         </nav>
-        <h1>Donate Food</h1>
+        <h1>Donate Your Money</h1>
         <p>Help us fight hunger!</p>
         <img src={banner} alt=''/>
       </header>
